@@ -38,9 +38,14 @@ return [
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
-            'database' => env('DB_DATABASE', database_path('database.sqlite')),
+            // 'database' => env('DB_DATABASE', database_path('database.sqlite')),
+            // 'database' => database_path('database.sqlite'),
+            'database' => database_path('database.sqlite'),
+            // 'schema' => 'homestead',
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
+            'username' => env('DB_USERNAME', ''),
+            'password' => env('DB_PASSWORD', ''),
         ],
 
         'mysql' => [

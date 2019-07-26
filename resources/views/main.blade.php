@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>16 day forecast</title>
+        <title>5 day forecast</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -33,11 +33,15 @@
             <div class="content">
 
                 <div class="title m-b-md">
-                    16 day forecast for {{-- $ipinfo->city --}}, {{-- $ipinfo->region --}}
+                    5 day forecast for {{ $ipinfo->city }}, {{ $ipinfo->region }}
                 </div>
 
                 <div class="multiday">
-                    <a href="">stuff goes here</a>
+
+                    @foreach ($weather_data[0]->days as $day)
+                        <p>This is user {{ $day }}</p>
+                    @endforeach
+
                 </div>
 
             </div>
