@@ -68,6 +68,8 @@ class MainViewComposer
             $weather_output = json_decode(curl_exec($ch));
             curl_close ($ch);
 
+            // dd($weather_output);
+
             $params = [
                     'id' => null,
                     'zipcode' => $ipinfo->postal,
@@ -117,7 +119,7 @@ class MainViewComposer
                 $data_for_view->days[ $current_date ][] = $event;
 
             } else {
-                
+
                 $current_date = $this_date;
                 $data_for_view->days[ $current_date ][] = $event;
             }
@@ -140,12 +142,12 @@ class MainViewComposer
             }
 
             foreach($day as $event){
-                $event->min_temp = $min;
-                $event->max_temp = $max;
+                $event->min_temp = round($min);
+                $event->max_temp = round($max);
             }
         }
 
-        dd($data_for_view);
+        // dd($data_for_view);
 
         $view->with('ipinfo', $ipinfo);
         $view->with('weather_data', $data_for_view);
