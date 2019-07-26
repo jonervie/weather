@@ -109,18 +109,23 @@ class MainViewComposer
         $data_for_view->days = [];
 
         $current_date = date("m-d-Y", strtotime($data_for_view->details[0]->dt_txt));
+        $current_date_display = date("l M d", strtotime($data_for_view->details[0]->dt_txt));
 
         foreach ($data_for_view->details as $event) {
 
             $this_date = date("m-d-Y", strtotime($event->dt_txt));
+            $this_date_display = date("l M d", strtotime($event->dt_txt));
 
             if($this_date == $current_date)
             {   
+                $event->date_display = $current_date_display;
                 $data_for_view->days[ $current_date ][] = $event;
 
             } else {
 
                 $current_date = $this_date;
+                $current_date_display = $this_date_display;
+                $event->date_display = $current_date_display;
                 $data_for_view->days[ $current_date ][] = $event;
             }
 
@@ -147,6 +152,7 @@ class MainViewComposer
             }
         }
 
+        array_shift($data_for_view->days);
         // dd($data_for_view);
 
         $view->with('ipinfo', $ipinfo);

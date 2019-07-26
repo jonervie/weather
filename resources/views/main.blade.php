@@ -24,7 +24,7 @@
             }
 
             .content {
-                border: 1px solid black;
+                /*border: 1px solid black;*/
                 padding: 50px;
             }
 
@@ -55,7 +55,8 @@
                     <div>
                         @foreach ($weather_data->days as $day)
                             <div class="daybox">
-                                <span>{{ $day[0]->main }}</span><br/>
+                                <span>{{ $day[0]->date_display }}</span><br/>
+                                <span>{{ $day[4]->main }}</span><br/>
                                 <img src="http://openweathermap.org/img/w/{{ $day[0]->icon }}.png"><br/>
                                 Min temp: {{ $day[0]->min_temp }} <br/>
                                 Max temp: {{ $day[0]->max_temp }} <br/>
